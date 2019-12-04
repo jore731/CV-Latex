@@ -1,0 +1,252 @@
+%%%%%%%%%%%%%%%%%
+% This is an sample CV template created using altacv.cls
+% (v1.1.5, 1 December 2018) written by LianTze Lim (liantze@gmail.com). Now compiles with pdfLaTeX, XeLaTeX and LuaLaTeX.
+%
+%% It may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%%%%%%%%%%%%%%%
+
+%% If you need to pass whatever options to xcolor
+\PassOptionsToPackage{dvipsnames}{xcolor}
+
+%% If you are using \orcid or academicons
+%% icons, make sure you have the academicons
+%% option here, and compile with XeLaTeX
+%% or LuaLaTeX.
+% \documentclass[10pt,a4paper,academicons]{altacv}
+
+%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
+% \documentclass[10pt,a4paper,normalphoto]{altacv}
+
+\documentclass[10pt,a4paper,ragged2e]{altacv}
+
+%% AltaCV uses the fontawesome and academicon fonts
+%% and packages.
+%% See texdoc.net/pkg/fontawecome and http://texdoc.net/pkg/academicons for full list of symbols. You MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
+
+% Change the page layout if you need to
+\geometry{left=1cm,right=15cm,marginparwidth=11cm,marginparsep=2cm,top=1.25cm,bottom=1.25cm}
+
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+\ifxetexorluatex
+  % If using xelatex or lualatex:
+  \setmainfont{Lato}
+\else
+  % If using pdflatex:
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage[default]{lato}
+\fi
+
+% Change the colours if you want to
+\definecolor{DarkBlue}{HTML}{173f5f}
+\definecolor{LightBlue}{HTML}{20639B}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\colorlet{heading}{DarkBlue}
+\colorlet{accent}{LightBlue}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+\newcommand{\cvpage}[1]{
+
+\cvsection[#1]{Aptitudes}
+\begin{center}
+\cvtag{Perseverancia}\\
+\cvtag{Gestión de Proyectos}\\
+\cvtag{Metodología Agile}\\
+\divider\smallskip
+\\
+\cvtag{C}\cvtag{C++}\cvtag{C\#}\\
+\cvtag{Python}\cvtag{OpenCV}\\
+\divider\smallskip
+\\
+\cvtag{KRL}\cvtag{PickMaster}\\
+\cvtag{Rapid}\cvtag{Robot Studio}\\
+\divider\smallskip
+\\
+\cvtag{GP PRO EX (Diseño HMIs)}\\
+\cvtag{Unilogic (Unitronics PLCs)}\\
+\divider\smallskip
+\\
+\cvtag{FPGA boards (MAX 10 by intel)}\\
+\cvtag{VHDL}\cvtag{Verilog}\\
+\divider\smallskip
+\\
+\cvtag{Office}\cvtag{\LaTeX}\\
+\divider\smallskip
+\\
+\cvtag{Lightroom}\cvtag{Photoshop}\\
+\cvtag{Illustrator}\\
+\divider\smallskip
+\\
+\cvtag{HTML}\cvtag{JSON}\\
+\cvtag{PHP}\cvtag{MySQL}\\
+\cvtag{Prestashop}\\
+\divider\smallskip
+\\
+\cvtag{Arduino}\cvtag{RaspberryPi}\\
+\divider\smallskip
+\\
+\cvtag{LabView}\\
+\divider\smallskip
+\\
+\cvtag{Solid Edge}\\
+\divider\smallskip
+\\
+\cvtag{Ladder PLC Programming}\\
+\cvtag{Paquete CX-ONE (Omron)}\\
+\cvtag{Tia Portal (Siemens)}\\
+
+\end{center}
+%% Yeah I didn't spend too much time making all the
+%% spacing consistent... sorry. Use \smallskip, \medskip,
+%% \bigskip, \vpsace etc to make ajustments.
+\medskip
+
+\cvsection{Idiomas}
+
+\cvskill{Inglés (C1)}{4}
+\divider
+
+\cvskill{Español (Nativo)}{5}
+}
+
+%% sample.bib contains your publications
+\addbibresource{sample.bib}
+\usepackage{url}
+\usepackage{hyperref}
+
+\begin{document}
+\name{Jorge Pulido López}
+\tagline{Ingeniería Electrónica Industrial y Automática || Grado en Física}
+\photo{2.8cm}{foto}
+\personalinfo{%
+  % Not all of these are required!
+  % You can add your own with \printinfo{symbol}{detail}
+  \email{\href{mailto:jorge.pulido@hotmail.com}{jorge.pulido@hotmail.com}}
+  \phone{+34-649896212}
+  %\mailaddress{Address, Street, 00000 County}
+  \location{Madrid, España}
+  %\homepage{www.homepage.com/}
+  %\twitter{@twitterhandle}
+  \href{https://www.linkedin.com/in/jorgepulido731}{\linkedin {linkedin.com/in/jorgepulido731}}
+
+  %\url{linkedin.com/in/jorgepulido731}  \linkedin
+
+  %\github{github.com/yourid}
+  %% You MUST add the academicons option to \documentclass, then compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or other academicons commands.
+  % \orcid{orcid.org/0000-0000-0000-0000}
+}
+
+%% Make the header extend all the way to the right, if you want.
+\begin{fullwidth}
+\makecvheader
+\end{fullwidth}
+
+%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+% \AtBeginEnvironment{itemize}{\small}
+
+%% Provide the file name containing the sidebar contents as an optional parameter to \cvsection.
+%% You can always just use \marginpar{...} if you do
+%% not need to align the top of the contents to any
+%% \cvsection title in the "main" bar.
+
+\cvpage{ES_Derecha_P1}
+\newpage
+\cvpage{ES_Derecha_P2}
+%
+%
+%
+%\cvevent{Engineering Department (Programming)}{Atlas Robots}{May 2018 -- Ongoing}{Valdemoro, Spain}
+%\begin{itemize}
+%\item Industrial robot programming
+%\item Industrial PLC programming
+%\item Industrial comunication protocol design
+%\end{itemize}
+%
+%\divider
+%
+%\cvevent{Laboratory monitor}{University of Colorado Boulder: CU Visual Arts Complex}{January 2017 -- May 2018}{Boulder, CO}
+%\begin{itemize}
+%\item Digital Photography
+%\item Dark room photography printing
+%\end{itemize}
+%
+%\cvevent{Bike mechanic}{University of Colorado Boulder: CU Environmental Center}{January 2018 -- May 2018}{Boulder, CO}
+%
+%\cvevent{Event management}{University of Colorado Boulder: CU Catering and Dining services}{October 2017 -- May 2018}{Boulder, CO}
+%
+%\cvevent{Ticket office attendant}{University of Colorado Boulder: CU Athletics}{August 2017 -- May 2018}{Boulder, CO}
+%
+%\cvevent{Temporary Employments}{Randstad }{June 2016 -- August 2017}{Madrid, Spain}
+%\begin{itemize}
+%\item H\&M attendant and logistics
+%\item Decathlon Logistics Department
+%\end{itemize}
+%
+%\cvevent{Maintenance of RFID payment system}{EXIT (Madcool Festival)}{June 2016}{Madrid, Spain}
+%
+%
+%%\cvsection{Projects}
+%
+%%\cvevent{Project 1}{Funding agency/institution}{}{}
+%%\begin{itemize}
+%%\item Details
+%%\end{itemize}
+%
+%%\divider
+%
+%%\cvevent{Project 2}{Funding agency/institution}{Project duration}{}
+%%A short abstract would also work.
+%
+%%\medskip
+%
+%%\cvsection{A Day of My Life}
+%
+%% Adapted from @Jake's answer from http://tex.stackexchange.com/a/82729/226
+%% \wheelchart{outer radius}{inner radius}{
+%% comma-separated list of value/text width/color/detail}
+%%\wheelchart{1.5cm}{0.5cm}{%
+%%  6/8em/accent!30/{Sleep,\\beautiful sleep},
+%%  3/8em/accent!40/Hopeful novelist by night,
+%%  8/8em/accent!60/Daytime job,
+%%  2/10em/accent/Sports and relaxation,
+%%  5/6em/accent!20/Spending time with family
+%%}
+%
+%%\clearpage
+%%\cvsection[page2sidebar]{Publications}
+%%\cvsection{Publications}
+%
+%%\nocite{*}
+%
+%%\printbibliography[heading=pubtype,title={\printinfo{\faBook}{Books}},type=book]
+%
+%%\divider
+%
+%%\printbibliography[heading=pubtype,title={\printinfo{\faFileTextO}{Journal Articles}},type=article]
+%
+%%\divider
+%
+%%\printbibliography[heading=pubtype,title={\printinfo{\faGroup}{Conference Proceedings}},type=inproceedings]
+%
+%%% If the NEXT page doesn't start with a \cvsection but you'd
+%%% still like to add a sidebar, then use this command on THIS
+%%% page to add it. The optional argument lets you pull up the
+%%% sidebar a bit so that it looks aligned with the top of the
+%%% main column.
+%% \addnextpagesidebar[-1ex]{page3sidebar}
+
+
+\end{document}
