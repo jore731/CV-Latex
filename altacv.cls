@@ -105,6 +105,7 @@
 
 \RequirePackage{tikz}
 \usetikzlibrary{arrows}
+\usetikzlibrary{backgrounds}
 \RequirePackage[skins]{tcolorbox}
 \RequirePackage{enumitem}
 \setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0.25\baselineskip,after=\vskip0.25\baselineskip}
@@ -205,9 +206,12 @@
   \smallskip
 }
 
-\newcommand{\cvtag}[1]{%
-  \tikz[baseline]\node[anchor=base,draw=body!30,rounded corners,inner xsep=1ex,inner ysep =0.75ex,text height=1.5ex,text depth=.25ex]{#1};
-}
+\newcommand{\cvtag}[2][5]{%
+    \tikz[baseline]{\node[name=text,anchor=base,inner xsep=0.75ex,inner ysep =0.75ex,text height=1.5ex,text depth=.25ex,text=white]{#2};
+    \scoped[on background layer]
+    \fill[fill=body, fill opacity=(#1/5)*0.7,inner ysep =0.75ex,text height=1.5ex, rounded corners] (text.south west) rectangle (text.north east);
+    \fill[fill=white] (text.south east) rectangle  ++(0.25ex,0); 
+}}
 
 \newcommand{\cvskill}[2]{%
 \textcolor{emphasis}{\textbf{#1}}\hfill
