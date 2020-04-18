@@ -1,0 +1,200 @@
+\PassOptionsToPackage{dvipsnames}{xcolor}
+
+\documentclass[10pt,a4paper,ragged2e]{altacv}
+
+\geometry{left=7.5cm,right=1cm,marginparwidth=6cm,marginparsep=0.5cm,top=.5cm,bottom=1.25cm}
+
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+\ifxetexorluatex
+  % If using xelatex or lualatex:
+  \setmainfont{Lato}
+\else
+  % If using pdflatex:
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage[default]{lato}
+\fi
+
+% Change the colours if you want to
+\definecolor{DarkBlue}{HTML}{173f5f}
+\definecolor{LightBlue}{HTML}{20639B}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\definecolor{TAGS}{HTML}{173f5f}
+\colorlet{heading}{DarkBlue}
+\colorlet{accent}{DarkBlue}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+\usepackage{url}
+\usepackage{hyperref}
+
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+% DOCUMENT
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{document}
+\name{Jorge Pulido López}
+\tagline{Ingeniería Electrónica Industrial y Automática || Grado en Física}
+
+\photoR{2.8cm}{foto}
+\personalinfo{
+  \email{\href{mailto:jorge.pulido@hotmail.com}{jorge.pulido@hotmail.com}}
+  \phone{+34-649896212}  
+  \location{Madrid, España}\\
+  \href{https://www.linkedin.com/in/jorgepulido731}{\linkedin {linkedin.com/in/jorgepulido731}}
+  \href{https://www.github.com/jore731}{\github{github.com/jore731}}}
+  \hspace*{-10cm}\makecvheader
+
+\reversemarginpar
+
+\cvsection[p1sidebar]{Experiencia Laboral}
+\cvevent{Desarrollador Python para Airbus Defence and Space (SHM)}{Altran}{Enero 2020 -- Actualidad}{Getafe, Madrid (España)}
+
+\cvevent{Departamento de Ingeniería y Control}{Atlas Robots}{Mayo 2018 -- Enero 2020}{Valdemoro,Madrid (España)}
+
+\cvevent{Empleos temporales}{University of Colorado Boulder / Randstad}{Junio 2015 -- Mayo 2018}{Boulder, CO (USA) / Madrid (España)}
+\begin{itemize}
+  \item Supervisor de laboratorio de revelado fotográfico
+  \item Mecánico de bicicletas
+  \item Organización de eventos
+  \item Dependiente de tienda\\
+  ...
+\end{itemize}
+  
+\cvsection{Formación}
+
+\cvevent{Grado en Ingeniería Electrónica Industrial y Automática}{Universidad Carlos III de
+Madrid}{Septiembre 2015 -- Octubre 2019}{}
+Matrícula de Honor en Mecánica de Estructuras.
+\\
+Matrícula de Honor en Electrónica Digital.
+
+\divider
+
+\cvevent{Grado en Ingeniería Electrónica Industrial y Automática}{University Of Colorado At Boulder}{Agosto 2017 -- Mayo 2018}{}
+Beca de movilidad internacional en programa de intercambio con la Universidad Carlos III de Madrid.
+
+\divider
+
+\cvevent{Grado en Física}{Universidad Nacional de Educación a Distancia (UNED)}{Septiembre 2018 -- En curso}{}
+
+\cvsection{Certificaciones}
+
+\cvevent{IELTS Certificate}{Cambridge University}{10 de Septiembre de 2016}{}
+C1 (Advanced)
+
+\divider
+
+\cvevent{Certified LabVIEW Associate Developer}{National Instruments}{11 de Enero de 2019}{}
+ Número de Certificación: 100-319-15117
+
+ \clearpage
+ \newgeometry{left=1cm,right=1cm,top=1.25cm,bottom=1.25cm}
+
+\cvskillsection{Proyectos}
+  \cvevent{Desarollo full stack de aplicación Python para procesamiento de datos de vuelo de aeronaves militares (Airbus Defence and Space)}{Altran}{Enero 2020 -- Actualidad}{Getafe, Madrid (España)}
+    \begin{itemize}
+      \item Interfaz PyQt utilizando PyQt5 multiplataforma (Linux/Windows).
+      \item Implementación de librerías externas.
+      \item Multithreading y multiprocessing.
+      \item Comunicación con bases de datos SQL
+      \item Patrón de desarrollo Modelo-Vista-Controlador modularizado.
+      \item Sector aeronáutico a nivel internacional.
+    \end{itemize}
+    \begin{center}
+      \vspace*{-0.2cm}
+      \cvtag[5]{Python}
+      \cvtag[5]{PyQt5}
+      \cvtag[5]{SQL}
+      \cvtag[5]{Front End}
+      \cvtag[4]{Linux-Red Hat}
+      \cvtag[3]{Data Science}
+      \cvtag[3]{NumPy}
+      \cvtag[3]{Pandas}
+      \cvtag[2]{JSON}
+      \vspace*{-0.2cm}
+    \end{center}
+  \divider
+
+
+  \cvevent{Diseño, desarrollo y prototipado de vehículo autónomo industrial de transporte de pallets (i+D)}{Atlas Robots}{Julio 2019 -- Enero 2020}{Valdemoro, Madrid (España)}
+    \begin{itemize}
+      \item Arquitectura de sistemas de sensores, actuadores y comunicaciones del vehículo.
+      \item Diseño eléctrico de prototipos.
+      \item Gestión general del proyecto (Plazos, entregas, documentación).
+      \item Programación del autómata Wago utilizado como centro de control.
+      \item Arquitectura de sistemas de seguridad eléctricos cumplimentando la normativa industrial.
+      \item Diseño y configuración de sistemas de comunicación internos y externos.
+    \end{itemize}
+    \begin{center}
+      \vspace*{-0.2cm}
+      \cvtag[5]{e!cockpit}
+      \cvtag[5]{LADDER}
+      \cvtag[5]{ST}
+      \cvtag[4]{SFC}
+      \cvtag[4]{CODESYS}
+      \cvtag[4]{CANOpen}
+      \cvtag[4]{Ethernet/IP}\\
+      \cvtag[3]{Gestión de proyectos}
+      \cvtag[2]{LiDAR}
+      \cvtag[2]{SLAM}
+      \cvtag[1]{EPLAN}
+      \vspace*{-0.2cm}
+    \end{center}
+  \divider
+
+  \cvevent{Programación y puesta en marcha de robot pick and place ABB con visión artifical}{Atlas Robots}{Mayo 2019 -- Noviembre 2019}{Valdemoro, Madrid (España)}
+    \begin{itemize}
+      \item Desarrollo de interfaz C\# con visión artificial para reconocimiento de imagen.
+      \item Comunicación robot-interfaz para envío de coordenadas de cogida en tiempo real.
+      \item Programación de robot ABB para el enpaquetado de bolsas (transportador de entrada) en cajas (transportador de salida).
+      \item Programación del autómata Wago utilizado como centro de control de sensores y actuadores.
+    \end{itemize}
+    \begin{center}
+      \vspace*{-0.2cm}
+      \cvtag[5]{C\#}
+      \cvtag[5]{OpenCV}
+      \cvtag[4]{CODESYS}
+      \cvtag[4]{CANopen}
+      \cvtag[3]{RobotStudio} 
+      \cvtag[3]{Ethernet/IP}
+      \vspace*{-0.2cm}
+    \end{center}
+  \divider
+
+  \cvevent{Arquitectura, programación y puesta en marcha de células industriales robotizadas a nivel nacional e internacional}{Atlas Robots}{Mayo 2018 -- Noviembre 2019}{Valdemoro, Madrid (España)}
+    \begin{itemize}
+      \item Gestión general de los proyectos (Plazos, entregas, documentación, pedidos y soporte técnico).
+      \item Arquitectura de sistemas de sensores, actuadores y comunicaciones del vehículo.
+      \item Programación de robots (KUKA, Fanuc, ABB) y autómatas (Siemens, Omron, Wago).
+      \item Diseño a medida de Sistemas de Control SCADA (ProFace, Siemens, Wago)
+      \item Mantenimiento eléctrico y mecánico de las instalaciones en casa de cliente.
+      \item Trato con clientes de diversas industrias (Alimenticia, química, plástica, automovilística...). 
+      \item Arquitectura de sistemas de seguridad eléctricos cumplimentando la normativa industrial.
+      \item Diseño y configuración de sistemas de comunicación internos y externos.
+    \end{itemize}
+    \begin{center}
+      \vspace*{-0.2cm}
+      \cvtag[5]{KRL}
+      \cvtag[5]{KSS 5}
+      \cvtag[5]{GP PRO EX}
+      \cvtag[5]{Tia Portal}
+      \cvtag[4]{ProfiNet}
+      \cvtag[4]{DeviceNet}\\
+      \cvtag[4]{Ethernet/IP}
+      \cvtag[3]{Gestión de proyectos}
+      \cvtag[2]{Profibus}
+      \cvtag[1]{EPLAN}
+      \vspace*{-0.2cm}
+    \end{center}
+
+\end{document}
+  

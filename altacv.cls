@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%
-% This is altacv.cls (v1.1.5, 1 December 2018) written by
+% This is altacv.cls (v1.2, 11 February 2020) written by
 % LianTze Lim (liantze@gmail.com).
 %
 %% It may be distributed and/or modified under the
@@ -18,9 +18,7 @@
 
 %%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-%% v1.4: Detect TL2018 to handle accented characters in class information
-\@ifl@t@r\fmtversion{2018/04/01}{\UseRawInputEncoding}{}
-\ProvidesClass{altacv}[2018/12/01 AltaCV v1.1.5, yet another alternative class for a résumé/curriculum vitae.]
+\ProvidesClass{altacv}[2020/02/11 AltaCV v1.2, yet another alternative class for a resume/curriculum vitae.]
 
 %% v1.1: Optionally load academicons
 \newif\if@academicons
@@ -39,6 +37,7 @@
 \RequirePackage{fontawesome}
 \RequirePackage{ifxetex,ifluatex}
 \RequirePackage{scrlfile}
+\RequirePackage{subfig}
 
 %% v1.1.5: added for convenience
 \newif\ifxetexorluatex
@@ -107,8 +106,8 @@
 \usetikzlibrary{arrows}
 \usetikzlibrary{backgrounds}
 \RequirePackage[skins]{tcolorbox}
-\RequirePackage{enumitem}
-\setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0.25\baselineskip,after=\vskip0.25\baselineskip}
+\RequirePackage[inline]{enumitem}
+\setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0.25\baselineskip,after=\vspace{0.25\baselineskip}}
 \setlist[itemize]{label=\itemmarker}
 \RequirePackage{graphicx}
 \RequirePackage{etoolbox}
@@ -135,10 +134,8 @@
 \newcommand{\mailsymbol}{\faEnvelope}
 
 \newcommand{\printinfo}[2]{\mbox{\textcolor{accent}{\normalfont #1}\hspace{0.5em}#2\hspace{2em}}}
-
 \newcommand{\name}[1]{\def\@name{#1}}
 \newcommand{\tagline}[1]{\def\@tagline{#1}}
-\newcommand{\photo}[2]{\def\@photo{#2}\def\@photodiameter{#1}}
 \newcommand{\email}[1]{\printinfo{\emailsymbol}{#1}}
 \newcommand{\mailaddress}[1]{\printinfo{\mailsymbol}{#1}}
 \newcommand{\phone}[1]{\printinfo{\phonesymbol}{#1}}
@@ -148,27 +145,61 @@
 \newcommand{\github}[1]{\printinfo{\githubsymbol}{#1}}
 \newcommand{\orcid}[1]{\printinfo{\orcidsymbol}{#1}}
 \newcommand{\location}[1]{\printinfo{\locationsymbol}{#1}}
-
 \newcommand{\personalinfo}[1]{\def\@personalinfo{#1}}
+
+% v1.2: Support for multiple photos
+\newlength{\altacv@photos@width}
+\newlength{\altacv@photo@diam@left}
+\newlength{\altacv@photo@diam@right}
+\def\altacv@left@photos{}
+\def\altacv@right@photos{}
+
+\newcommand{\@makeaphoto}[2]{%
+  \begin{minipage}{#1}%
+    \if@normalphoto
+      \includegraphics[width=\linewidth]{#2}
+    \else
+      \tikz\path[fill overzoom image={#2}]circle[radius=0.5\linewidth];
+    \fi%
+  \end{minipage}%
+}
+
+\newcommand{\altacv@add@photo@left}[1]{%
+  \appto{\altacv@left@photos}{%
+    \@makeaphoto{\altacv@photo@diam@left}{#1}\hspace{1ex}%
+  }%
+  \addtolength{\altacv@photos@width}{\altacv@photo@diam@left}%
+  \addtolength{\altacv@photos@width}{1ex}%
+}
+\newcommand{\altacv@add@photo@right}[1]{%
+  \appto{\altacv@right@photos}{%
+    \@makeaphoto{\altacv@photo@diam@right}{#1}\hspace{1ex}%
+  }%
+  \addtolength{\altacv@photos@width}{\altacv@photo@diam@right}%
+  \addtolength{\altacv@photos@width}{1ex}%
+}
+\newcommand{\photoL}[2]{%
+  \setlength{\altacv@photo@diam@left}{#1}%
+  \forcsvlist{\altacv@add@photo@left}{#2}%
+}
+\newcommand{\photoR}[2]{%
+  \setlength{\altacv@photo@diam@right}{#1}%
+  \forcsvlist{\altacv@add@photo@right}{#2}%
+}
+\let\photo\photoR
 
 \newcommand{\makecvheader}{%
   \begingroup
-    \ifdef{\@photodiameter}{\begin{minipage}{\dimexpr\linewidth-\@photodiameter-2em}}{}%
+    \altacv@left@photos\hfill%
+    \begin{minipage}{\dimexpr\textwidth}%
     \raggedright\color{emphasis}%
     {\Huge\bfseries\MakeUppercase{\@name}\par}
     \medskip
     {\large\bfseries\color{accent}\@tagline\par}
     \medskip
     {\footnotesize\bfseries\@personalinfo\par}
-    \ifdef{\@photodiameter}{%
-    \end{minipage}\hfill%
-    \begin{minipage}{\@photodiameter}
-    \if@normalphoto
-      \includegraphics[width=\linewidth]{\@photo}
-    \else
-      \tikz\path[fill overzoom image={\@photo}]circle[radius=0.5\linewidth];
-    \fi%
-    \end{minipage}\par}{}%
+    \end{minipage}\hfill
+    \altacv@right@photos\par%
   \endgroup\medskip
 }
 
@@ -178,6 +209,19 @@
   \bigskip%
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
   {\color{heading}\LARGE\bfseries\MakeUppercase{#2}}\\[-1ex]%
+  {\color{heading}\rule{\linewidth}{2pt}\par}\medskip
+}
+
+\newcommand{\cvskillsection}[2][]{%
+  \bigskip%
+  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+  \tikz{
+        \node[name=fullwidth,left color=white,right color=white, minimum width=\linewidth]{};
+        \node[name=skills,anchor=west] at (fullwidth.west) {\hspace*{-0.1cm}\color{heading}\LARGE\bfseries\MakeUppercase{#2}} ;
+        \node[anchor=east, name=min] at (fullwidth.east) {1};
+        \node [name=bar,rectangle, rounded corners,left color=TAGS, anchor=east, right color=TAGS!20, minimum width=1.2cm, minimum height=0.3cm] at (min.west){};
+        \node[anchor=east, name=max] at (bar.west) {5};
+    }\vspace*{-0.3cm}
   {\color{heading}\rule{\linewidth}{2pt}\par}\medskip
 }
 
@@ -209,7 +253,7 @@
 \newcommand{\cvtag}[2][5]{%
     \tikz[baseline]{\node[name=text,anchor=base,inner xsep=0.75ex,inner ysep =0.75ex,text height=1.5ex,text depth=.25ex,text=white]{#2};
     \scoped[on background layer]
-    \fill[fill=body, fill opacity=(#1/5)*0.7,inner ysep =0.75ex,text height=1.5ex, rounded corners] (text.south west) rectangle (text.north east);
+    \fill[fill=TAGS, fill opacity=((#1+1)/7),inner ysep =0.75ex,text height=1.5ex, rounded corners] (text.south west) rectangle (text.north east);
     \fill[fill=white] (text.south east) rectangle  ++(0.25ex,0); 
 }}
 
